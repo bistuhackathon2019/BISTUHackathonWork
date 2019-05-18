@@ -5,26 +5,26 @@
 
       </div>
     </div>
-    <el-form ref="loginForm" :model="loginForm" :rules="rules" label-width="80px" class="login-form">
+    <el-form ref="loginForm" :model="loginForm" :rules="rules" class="login-form" label-width="60px">
       <el-form-item prop="username" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input v-model="loginForm.nickName" placeholder="昵称"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="password" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input type="password" v-model="loginForm.password" placeholder="密码"></el-input>
         </el-col>
       </el-form-item>
 
       <div class="btns">
         <el-form-item>
-          <el-col :span="20">
+          <el-col>
             <el-button type="mini" @click="submitForm('loginForm')" class="login-btn" :round="true">登录</el-button>
           </el-col>
         </el-form-item>
         <el-form-item>
-          <el-col :span="20">
+          <el-col>
             <el-button type="mini" @click="toRegister" class="register-btn" :round="true">注册</el-button>
           </el-col>
         </el-form-item>
@@ -77,17 +77,18 @@ export default {
   .btns >>> .el-button:focus, .el-button:focus
     color #fff!important
   .el-form-item
-    margin-bottom 0
+    margin-bottom 0!important
   .btns
     margin-top 30px
   .el-form-item >>> .el-form-item__content
     line-height 35px
+    margin 0 72px
   .login-form >>> .el-input__inner
     border 0
     border-radius 0
     border-bottom 1px solid #000000
-    width 231px
     height 22px
+    width 100%
   .register-btn
     background-color rgba(151, 151, 151, .09)
     width 100%

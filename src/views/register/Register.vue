@@ -8,35 +8,35 @@
 
       </div>
     </div>
-    <el-form ref="registerForm" :model="registerForm" :rules="rules" label-width="80px" class="register-form">
+    <el-form ref="registerForm" :model="registerForm" :rules="rules" class="register-form">
       <el-form-item prop="nickName" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input v-model="registerForm.nickName" placeholder="昵称"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="realName" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input v-model="registerForm.realName" placeholder="真实姓名"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="college" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input v-model="registerForm.college" placeholder="学院"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="password" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input type="password" v-model="registerForm.password" placeholder="密码"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="confirmPassword" :inline-message="true">
-        <el-col :span="20">
+        <el-col>
           <el-input type="password" v-model="registerForm.confirmPassword" placeholder="确定密码"></el-input>
         </el-col>
       </el-form-item>
       <div class="btns">
         <el-form-item>
-          <el-col :span="20">
+          <el-col>
             <el-button type="mini" @click="submitForm('registerForm')" class="register-btn" :round="true">完成</el-button>
           </el-col>
         </el-form-item>
@@ -138,20 +138,16 @@ export default {
   .el-form-item
     margin-bottom 0!important
   .btns
-    margin-top 30px
+    margin-top 30px!important
   .el-form-item >>> .el-form-item__content
     line-height 35px
+    margin 0 72px
   .register-form >>> .el-input__inner
     border 0
     border-radius 0
     border-bottom 1px solid #000000
-    width 231px
+    width 100%
     height 22px
-  /*.register-form >>> .el-form-item__error*/
-    /*height 0*/
-    /*position absolute*/
-    /*top 7px*/
-    /*left 5px*/
   .register-btn
     width 100%
     background-color #000000
