@@ -1,14 +1,30 @@
 <template>
   <div>
-    <el-form ref="loginForm" :model="loginForm" :rules="rules">
+    <div class="avator-wrapper">
+      <div class="avator">
+
+      </div>
+    </div>
+    <el-form ref="loginForm" :model="loginForm" :rules="rules" label-width="80px">
       <el-form-item label="用户名" prop="username">
-        <el-input v-model="loginForm.username"></el-input>
+        <el-col :span="20">
+          <el-input v-model="loginForm.username"></el-input>
+        </el-col>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input type="password" v-model="loginForm.password"></el-input>
+        <el-col :span="20">
+          <el-input type="password" v-model="loginForm.password"></el-input>
+        </el-col>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('loginForm')">立即登录</el-button>
+          <el-col :span="20">
+            <el-button type="primary" @click="submitForm('loginForm')" class="login-btn">登录</el-button>
+          </el-col>
+      </el-form-item>
+      <el-form-item>
+        <el-col :span="20">
+          <el-button type="primary" @click="toRegister" class="register-btn">注册</el-button>
+        </el-col>
       </el-form-item>
     </el-form>
   </div>
@@ -43,11 +59,27 @@ export default {
           return false
         }
       })
+    },
+    toRegister () {
+      this.$router.push('/register')
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-
+  .register-btn
+    width 100%
+  .login-btn
+    width 100%
+  .avator-wrapper
+    margin 60px 0 40px 0
+    width 100%
+    .avator
+      display block
+      margin 0 auto
+      width 120px
+      height 120px
+      border-radius 50%
+      background-color red
 </style>

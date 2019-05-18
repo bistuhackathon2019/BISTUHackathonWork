@@ -11,8 +11,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/': {
-        target: 'http://social.getcrazye.com',
+      '/api/v1/user/register': {
+        target: 'http://social.getcrazye.com:5000/api/v1/user/register',
         changeOrigin: true,  //是否跨域
       }
     },

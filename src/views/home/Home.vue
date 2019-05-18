@@ -1,5 +1,6 @@
 <template>
 <div>
+  <router-link to="/login" tag="div">
     <div v-for="(item, index) in postList" :key="index">
       <el-card class="box-card">
         <div class="text">
@@ -12,6 +13,7 @@
       </el-card>
       <el-divider></el-divider>
     </div>
+  </router-link>
 </div>
 </template>
 
@@ -37,20 +39,20 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .box-card >>> .el-card__body
+    padding 10px
   .box-card
     width 100%
+    padding 0
     .text
       font-size 14px
       margin-bottom 10px
-    .item
-      padding 18px 0
     .feedback
       height 30px
-      background-color red
       overflow hidden
       .more
         float right
-        width 75px
+        width 52px
         line-height 30px
         font-size 13px
 </style>
