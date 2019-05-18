@@ -6,16 +6,16 @@
       </div>
     </div>
     <div style="display: flex">
-      <div style="display: flex;margin: 0 auto;position: relative" @click="click1">
+      <div style="display: flex;margin: 0 auto;position: relative">
         热度
+      </div>
+      <div style="display: flex;margin: 0 auto;position: relative" @click="click1">范围
         <div class="options" v-if="showOpc">
           <div class="options-item">全校</div>
           <div class="options-item">学院</div>
           <div class="options-item">个人</div>
-        </div>
-      </div>
-      <div style="display: flex;margin: 0 auto;">范围</div>
-      <div style="display: flex;margin: 0 auto;">时间</div>
+        </div></div>
+      <div style="display: flex;margin: 0 auto;position: relative">时间</div>
     </div>
     <el-divider></el-divider>
     <div class="opc" v-if="showOpc">
