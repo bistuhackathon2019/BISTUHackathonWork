@@ -21,7 +21,13 @@
       </el-form-item>
       <el-form-item prop="college" :inline-message="true">
         <el-col>
-          <el-input v-model="registerForm.college" placeholder="学院"></el-input>
+          <el-select v-model="registerForm.college" placeholder="请选择">
+            <el-option
+              v-for="item in colleges"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"></el-option>
+          </el-select>
         </el-col>
       </el-form-item>
       <el-form-item prop="password" :inline-message="true">
@@ -47,8 +53,22 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'Register',
+  created () {
+    axios.get('/api/v1/user/institute')
+      .then((res) => {
+        res = res.data
+        console.log(res)
+        this.colleges = res.data.institutes
+        console.log(this.colleges)
+      })
+      .catch((error) => {
+        console.log(error)
+        alert('error')
+      })
+  },
   data () {
     let checkConfirmPassword = (rule, value, callback) => {
       let that = this
@@ -72,6 +92,7 @@ export default {
         password: '',
         confirmPassword: ''
       },
+      colleges: '',
       rules: {
         nickName: [
           {required: true, message: '请输入昵称', trigger: 'blur'}
@@ -81,9 +102,6 @@ export default {
         ],
         college: [
           {required: true, message: '请输入学院', trigger: 'blur'}
-        ],
-        username: [
-          {required: true, message: '请输入用户名', trigger: 'blur'}
         ],
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'}
@@ -99,19 +117,18 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           axios.post('/api/v1/user/register', {
-            username: this.registerForm.username,
+            username: this.registerForm.nickName,
             real_name: this.registerForm.realName,
             password: this.registerForm.password,
-            institute: this.registerForm.college
+            institute_id: this.registerForm.college
           })
             .then((res) => {
               res = res.data
-              if (res.data.code && res.code === 0) {
-                alert('注册成功')
-                this.$router.push('/login')
-              } else if (res.data.code === -1) {
+              if (res.code === 0) {
+                this.$router.push('/')
+              } else if (res.data.code === '-1') {
                 alert(res.data.msg)
-              } else if (res.data.code === -2) {
+              } else if (res.data.code === '-2') {
                 alert(res.data.msg)
               }
             })
@@ -121,6 +138,7 @@ export default {
             })
         } else {
           alert('错误提交，请检查提交参数')
+          console.log(this.registerForm.college)
           return false
         }
       })
@@ -133,33 +151,42 @@ export default {
   .btns >>> .el-button
     color #fff
     border 0
+
   .btns >>> .el-button:focus, .el-button:focus
-    color #fff!important
+    color #fff !important
+
   .el-form-item
-    margin-bottom 0!important
+    margin-bottom 0 !important
+
   .btns
-    margin-top 30px!important
+    margin-top 30px !important
+
   .el-form-item >>> .el-form-item__content
     line-height 35px
     margin 0 72px
+
   .register-form >>> .el-input__inner
     border 0
     border-radius 0
     border-bottom 1px solid #000000
     width 100%
     height 22px
+
   .register-btn
     width 100%
     background-color #000000
+
   .back-icon
     position absolute
     left 20px
     top 14.5px
     width 23px
     height 26px
+
   .avator-wrapper
     margin 92px 0 40px 0
     width 100%
+
     .avator
       display block
       margin 0 auto
@@ -167,8 +194,10 @@ export default {
       height 95px
       border-radius 50%
       background-color gray
+
   .el-form-item
     margin-bottom 18px
+
     .register-btn
       width 100%
 </style>

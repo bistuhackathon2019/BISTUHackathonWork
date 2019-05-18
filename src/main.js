@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from '@/store/index'
 
 import '@/assets/styles/reset.css'
 import '@/assets/styles/border-1px.css'
@@ -18,6 +19,7 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 })

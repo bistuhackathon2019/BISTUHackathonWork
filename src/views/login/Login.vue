@@ -8,7 +8,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="rules" class="login-form" label-width="60px">
       <el-form-item prop="username" :inline-message="true">
         <el-col>
-          <el-input v-model="loginForm.nickName" placeholder="昵称"></el-input>
+          <el-input v-model="loginForm.username" placeholder="昵称"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item prop="password" :inline-message="true">
@@ -34,12 +34,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { mapMutations } from 'vuex'
 export default {
   name: 'Login',
   data () {
     return {
       loginForm: {
-        nickName: '',
+        username: '',
         password: ''
       },
       rules: {
@@ -56,7 +58,19 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('登录成功')
+          axios.post('/api/v1/user', this.loginForm)
+            .then((res) => {
+              res = res.data
+              if (res.code === 0) {
+                this.changeUserInfo({userId: res.data.id})
+                this.changeLoginStatus(true)
+                this.changeToken(res.data.token)
+                this.$router.push('/home')
+              }
+            }).catch((error) => {
+              console.log(error)
+              alert('错误')
+            })
         } else {
           alert('错误提交，请检查提交参数')
           return false
@@ -65,7 +79,8 @@ export default {
     },
     toRegister () {
       this.$router.push('/register')
-    }
+    },
+    ...mapMutations(['changeUserInfo', 'changeLoginStatus', 'changeToken'])
   }
 }
 </script>

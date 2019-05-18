@@ -21,256 +21,47 @@
     <div class="opc" v-if="showOpc">
     </div>
     <div class="content-list">
-      <div class="content-item">
+      <div
+        class="content-item"
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <div class="inner">
           <div class="item-header">
             <div class="item-header-avator"></div>
-            <div class="item-header-name">finlu</div>
+            <div class="item-header-name" v-if="item.is_anonymous">{{item.anonymous_name}}</div>
+            <div class="item-header-name" v-else>{{item.user.username}}</div>
             <div class="item-header-time">1 hour age</div>
           </div>
-          <div class="item-img-wrapper"></div>
+          <div class="item-img-wrapper">
+            <img style="width: 100%;height: 100%" :src="item.uri" alt="">
+          </div>
         </div>
         <div class="em-list">
           <div class="em-item">
             <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/1.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
+            <div style="display: inline-block" class="num">x {{ item.emoji1 }}</div>
           </div>
           <div class="em-item">
             <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/2.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
+            <div style="display: inline-block" class="num">x {{ item.emoji2 }}</div>
           </div>
           <div class="em-item">
             <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/3.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
+            <div style="display: inline-block" class="num">x {{ item.emoji3 }}</div>
           </div>
           <div class="em-item">
             <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/4.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
+            <div style="display: inline-block" class="num">x {{ item.emoji4 }}</div>
           </div>
           <div class="em-item">
             <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/5.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
+            <div style="display: inline-block" class="num">x {{ item.emoji5 }}</div>
           </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-list">
-            <div class="comment-item">
-              <p class="name">zlccc</p>
-              <p class="user-comment">啦啦啦</p>
-            </div>
-            <div class="comment-item">
-              <p class="name">略略略</p>
-              <p class="user-comment">啦啦啦啊啦啦啦</p>
-            </div>
-          </div>
-          <div class="my-comment">
-            <div class="my-comment-name">asdasd</div>
-            <div class="my-comment-input-wrapper">
-              <input type="text" class="my-comment-input"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="inner">
-          <div class="item-header">
-            <div class="item-header-avator"></div>
-            <div class="item-header-name">finlu</div>
-            <div class="item-header-time">1 hour age</div>
-          </div>
-          <div class="item-img-wrapper"></div>
-        </div>
-        <div class="em-list">
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/1.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/2.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/3.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/4.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/5.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-list">
-            <div class="comment-item">
-              <p class="name">zlccc</p>
-              <p class="user-comment">啦啦啦</p>
-            </div>
-            <div class="comment-item">
-              <p class="name">略略略</p>
-              <p class="user-comment">啦啦啦啊啦啦啦</p>
-            </div>
-          </div>
-          <div class="my-comment">
-            <div class="my-comment-name">asdasd</div>
-            <div class="my-comment-input-wrapper">
-              <input type="text" class="my-comment-input"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="inner">
-          <div class="item-header">
-            <div class="item-header-avator"></div>
-            <div class="item-header-name">finlu</div>
-            <div class="item-header-time">1 hour age</div>
-          </div>
-          <div class="item-img-wrapper"></div>
-        </div>
-        <div class="em-list">
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/1.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/2.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/3.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/4.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/5.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-list">
-            <div class="comment-item">
-              <p class="name">zlccc</p>
-              <p class="user-comment">啦啦啦</p>
-            </div>
-            <div class="comment-item">
-              <p class="name">略略略</p>
-              <p class="user-comment">啦啦啦啊啦啦啦</p>
-            </div>
-          </div>
-          <div class="my-comment">
-            <div class="my-comment-name">asdasd</div>
-            <div class="my-comment-input-wrapper">
-              <input type="text" class="my-comment-input"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="inner">
-          <div class="item-header">
-            <div class="item-header-avator"></div>
-            <div class="item-header-name">finlu</div>
-            <div class="item-header-time">1 hour age</div>
-          </div>
-          <div class="item-img-wrapper"></div>
-        </div>
-        <div class="em-list">
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/1.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/2.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/3.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/4.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/5.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-        </div>
-        <div class="comment">
-          <div class="comment-list">
-            <div class="comment-item">
-              <p class="name">zlccc</p>
-              <p class="user-comment">啦啦啦</p>
-            </div>
-            <div class="comment-item">
-              <p class="name">略略略</p>
-              <p class="user-comment">啦啦啦啊啦啦啦</p>
-            </div>
-          </div>
-          <div class="my-comment">
-            <div class="my-comment-name">asdasd</div>
-            <div class="my-comment-input-wrapper">
-              <input type="text" class="my-comment-input"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-item">
-        <div class="inner">
-          <div class="item-header">
-            <div class="item-header-avator"></div>
-            <div class="item-header-name">finlu</div>
-            <div class="item-header-time">1 hour age</div>
-          </div>
-          <div class="item-img-wrapper"></div>
-        </div>
-        <div class="em-list">
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/1.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/2.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/3.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/4.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/5.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
-          <div class="em-item">
-            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>
-            <div style="display: inline-block" class="num">x 1</div>
-          </div>
+<!--          <div class="em-item">-->
+<!--            <div style="display: inline-block" class="em-wrapper"><img class="em" src="/static/6.jpeg" alt=""></div>-->
+<!--            <div style="display: inline-block" class="num">x {{ item.emoji6 }}}</div>-->
+<!--          </div>-->
         </div>
         <div class="comment">
           <div class="comment-list">
@@ -296,25 +87,48 @@
 </template>
 
 <script>
-  export default {
-    name: 'Home',
-    data () {
-      return {
-        showOpc: false
+import axios from 'axios'
+import { mapState } from 'vuex'
+export default {
+  name: 'Home',
+  data () {
+    return {
+      showOpc: false,
+      list: []
+    }
+  },
+  created () {
+    axios.get('/api/v1/post', {
+      headers: {
+        digest: this.token,
+        'user-id': this.userInfo.userId,
+        timestamp: 123
       }
-    },
-    methods: {
-      click1 () {
-        let body = document.getElementsByTagName('body')[0]
-        if (this.showOpc) {
-          body.style.overflow = 'auto'
-        } else {
-          body.style.overflow = 'hidden'
+    })
+      .then((res) => {
+        res = res.data
+        if (res.code === 0) {
+          this.list = res.data
+          console.log(this.list)
         }
-        this.showOpc = !this.showOpc
+        console.log(res)
+      })
+  },
+  computed: {
+    ...mapState(['userInfo', 'hasLogin', 'token'])
+  },
+  methods: {
+    click1 () {
+      let body = document.getElementsByTagName('body')[0]
+      if (this.showOpc) {
+        body.style.overflow = 'auto'
+      } else {
+        body.style.overflow = 'hidden'
       }
+      this.showOpc = !this.showOpc
     }
   }
+}
 </script>
 
 <style lang="stylus" scoped>
